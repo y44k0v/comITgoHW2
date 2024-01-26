@@ -6,29 +6,64 @@ import (
 )
 
 func main() {
+	// variables
 	var input int
 
 	superheroes := []string{"Batman", "Superman", "Spiderman", "Ironman", "Wonder Women"}
 	villans := []string{"The Joker", "Loki", "Thanos", "Darth Vader", "Voldemort"}
-	Quests := []string{"Catch", "distroy", "kill", "save", "kidnap"}
+	quests := []string{"catch", "destroy", "kill", "save", "kidnap"}
 
+	// introduction
 	fmt.Println("Hey...Hey you, do you want to become a superhero?")
-	fmt.Println("I will give you a quest and a villain to defeat:")
-
-	// Using current time as a seed
-	seed := time.Now().UnixNano()
+	fmt.Println("I will give you a quest task and a villain to defeat...")
 
 	// User input
-	fmt.Println("Choose a number:")
+	fmt.Print("\nEnter any 1 digit number: ")
 	fmt.Scan(&input)
 
-	// Modifying the seed with user input
-	seed = (seed + int64(input)) % 100
+	// Selecting the strings based on modified user input
+	// generating seed
+	seed := randomNum(input)
+	// hero selection
+	choice1 := selector(seed, superheroes)
+	// renewing seed
+	seed = randomNum(input)
+	// villan selection
+	choice2 := selector(seed, villans)
+	// renewing seed
+	seed = randomNum(input)
+	// task selection
+	choice3 := selector(seed, quests)
 
-	// Selecting the strings based on modified seed
-	choice1 := superheroes[seed%int64(len(superheroes))]
-	choice2 := villans[seed%int64(len(villans))]
-	choice3 := Quests[seed%int64(len(Quests))]
+	// quest assigment
+	fmt.Printf("\nYou are %s and your quest is to %s %s\n", choice1, choice3, choice2)
+}
 
-	fmt.Printf("You are  %s and your quest is to  %s  %s\n", choice1, choice3, choice2)
+func randomNum(input int) int64 {
+	/*function to produce a "random" number based on a single digit integer.
+	  It takes an integer as argument and return another integers based on
+	  the start of the unix time in nanoseconds
+	*/
+
+	// getting unix time
+	seed := time.Now().UnixNano()
+	// incorporating user input
+	seed += int64(input)
+	// reducind the number to a antegers less than 100
+	seed %= 100
+
+	return seed
+
+}
+
+func selector(seed int64, array []string) string {
+	/* Function to select an element from an array
+	   based on randomized user input. The seed being a < 100
+	   is reduced to a number no larger than the size of the array.
+	*/
+
+	// the seed being a 2 digit number < 100 is reduced to a single digit
+	selection := array[seed%int64(len(array))]
+
+	return selection
 }
