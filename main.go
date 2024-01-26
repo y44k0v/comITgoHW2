@@ -46,7 +46,7 @@ func randomNum(input int) int64 {
 	*/
 
 	// getting unix time
-	seed := time.Now().UnixNano()
+	seed := time.Now().UnixMicro()
 	// incorporating user input
 	seed += int64(input)
 	// reducind the number to a antegers less than 100
