@@ -7,6 +7,7 @@ import (
 
 func main() {
 	var input int
+
 	superheroes := []string{"Batman", "Superman", "Spiderman", "Ironman", "Wonder Women"}
 	villans := []string{"The Joker", "Loki", "Thanos", "Darth Vader", "Voldemort"}
 	Quests := []string{"Catch", "distroy", "kill", "save", "kidnap"}
