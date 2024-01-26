@@ -9,7 +9,7 @@ func main() {
 	var input int
 	superheroes := []string{"Batman", "Superman", "Spiderman", "Ironman", "Wonder Women"}
 	villans := []string{"The Joker", "Loki", "Thanos", "Darth Vader", "Voldemort"}
-	Quests := []string{"Catch", "....", "kill", "save", "live", "go", "rage"}
+	Quests := []string{"Catch", "distroy", "kill", "save", "kidnap"}
 
 	fmt.Println("Hey...Hey you, do you want to become a superhero?")
 	fmt.Println("I will give you a quest and a villain to defeat:")
