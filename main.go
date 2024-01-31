@@ -41,7 +41,7 @@ func main() {
 
 func randomNum(input int) int64 {
 	/*function to produce a "random" number based on a single digit integer.
-	  It takes an integer as argument and return another integers based on
+	  It takes an integer as argument and return another integer based on
 	  the start of the unix time in nanoseconds
 	*/
 
@@ -49,7 +49,7 @@ func randomNum(input int) int64 {
 	seed := time.Now().UnixMicro()
 	// incorporating user input
 	seed += int64(input)
-	// reducind the number to a antegers less than 100
+	// reducing the number to a integer less than 100
 	seed %= 100
 
 	return seed
